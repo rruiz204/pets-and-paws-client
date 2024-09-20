@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { schema, FormInputs } from "./validation";
-import Field from "../../components/Field";
-import Button from "../../components/Button";
+import Field from "../../components/forms/Field";
+import Button from "../../components/buttons/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 function Form() {
@@ -14,9 +14,9 @@ function Form() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-3 mb-6">
-          <Field label="email" placeholder="example@gmail.com" type="text"
+          <Field label="email" path="email" placeholder="example@gmail.com" type="text"
             register={register} error={errors.email?.message}></Field>
-          <Field label="password" placeholder="password123" type="password"
+          <Field label="password" path="password" placeholder="password123" type="password"
             register={register} error={errors.password?.message}></Field>
         </div>
         <Button text="Login"></Button>
