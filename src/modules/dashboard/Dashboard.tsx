@@ -1,25 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { TestDTO } from "../../dtos/TestDTO";
 import { BASE_URL } from "../../env";
+import useFetch from "../../hooks/useFetch";
 
 function Dashboard() {
-  const [data, setData] = useState<TestDTO | null>();
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string>();
+  const { data, loading, error, fetcher } = useFetch<TestDTO>(BASE_URL + "/Test", { method: "GET" });
 
   useEffect(() => {
-    const fetcher = async () => {
-      const response = await fetch(BASE_URL + "/Test");
-      const result = await response.json();
-
-      if (result?.data) {
-        console.log(result.data);
-        setData(result.data)
-      }
-      if (result?.error) setError(result.error);
-      setLoading(false);
-    };
-
     fetcher();
   }, []);
 
