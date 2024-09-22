@@ -3,14 +3,16 @@ import Logo from "../../assets/imgs/pets-and-paws-logo.png"
 
 function Login() {
   return (
-    <div className="w-screen h-screen flex justify-center pt-24 text-seconday">
-      <div className="p-4 min-w-80 w-[450px]">
-        <div className="mb-8">
-          <img src={Logo} alt="Paw" className="block mx-auto" width={250} height={250}/>
-          <h1 className="text-center text-3xl font-bold">Sign in to your account</h1>
-        </div>
-        <div className="border-2 p-10 rounded-md">
-          <Form></Form>
+    <div className="w-screen h-screen pt-24 text-seconday">
+      <div className="px-6 py-4 min-w-[360px] max-w-[450px] mx-auto">
+        <div className="flex flex-col gap-10">
+          <div>
+            <img src={Logo} className="block mx-auto" width={250} height={250} />
+            <h1 className="text-center text-3xl font-bold">Signin to your account</h1>
+          </div>
+          <div>
+            <Form></Form>
+          </div>
         </div>
       </div>
     </div>
