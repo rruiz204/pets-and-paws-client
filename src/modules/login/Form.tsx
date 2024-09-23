@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
-import { schema, FormInputs } from "./validation";
+import { schema, AuthInputs } from "./validation";
 import Field from "../../components/forms/Field";
 import Button from "../../components/buttons/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
+import useAuthStore from "../../stores/useAuthStore";
 
 function Form() {
   const { register, handleSubmit, formState: { errors }
-  } = useForm<FormInputs>({ resolver: yupResolver(schema) });
+  } = useForm<AuthInputs>({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data: FormInputs) => console.log(data);
+  const { login } = useAuthStore();
+
+  const onSubmit = (data: AuthInputs) => login(data);
 
   return (
     <div>
