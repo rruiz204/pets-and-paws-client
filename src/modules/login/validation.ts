@@ -5,4 +5,4 @@ export const schema = yup.object({
   password: yup.string().min(8).required()
 });
 
-export type FormInputs = yup.InferType<typeof schema>;
+export type AuthInputs = yup.InferType<typeof schema>;
