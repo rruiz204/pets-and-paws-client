@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { schema, AuthInputs } from "./validation";
 import Field from "../../components/forms/Field";
-import Button from "../../components/buttons/Button";
+import ButtonLoading from "../../components/buttons/ButtonLoading";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuthStore from "../../stores/useAuthStore";
 
@@ -9,7 +9,7 @@ function Form() {
   const { register, handleSubmit, formState: { errors }
   } = useForm<AuthInputs>({ resolver: yupResolver(schema) });
 
-  const { login } = useAuthStore();
+  const { login, loading } = useAuthStore();
 
   const onSubmit = (data: AuthInputs) => login(data);
 
@@ -22,7 +22,7 @@ function Form() {
           <Field label="password" path="password" placeholder="password123" type="password"
             register={register} error={errors.password?.message}></Field>
         </div>
-        <Button text="Login"></Button>
+        <ButtonLoading text="Login" isLoading={loading}></ButtonLoading>
       </form>
     </div>
   );
