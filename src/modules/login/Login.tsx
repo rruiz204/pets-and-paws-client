@@ -1,7 +1,11 @@
 import Form from "./Form";
 import Logo from "../../assets/imgs/pets-and-paws-logo.png"
+import useAuthStore from "../../stores/useAuthStore";
+import ErrorIcon from "../../assets/svgs/error.svg";
 
 function Login() {
+  const { error } = useAuthStore();
+
   return (
     <div className="w-screen h-screen pt-24 text-seconday">
       <div className="px-6 py-4 min-w-[360px] max-w-[450px] mx-auto">
@@ -12,6 +16,10 @@ function Login() {
           </div>
           <div>
             <Form></Form>
+            { error && <div className="mt-6 flex justify-center items-center gap-1">
+              <img src={ErrorIcon} width={20} height={20} />
+              <p className="text-primary text-center font-semibold">{error}</p>
+            </div> }
           </div>
         </div>
       </div>
