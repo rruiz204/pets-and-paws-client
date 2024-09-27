@@ -20,7 +20,9 @@ const useAuthStore = create<State & Action>((set) => ({
     set({ loading: true, error: undefined });
     const khaos = new Khaos("/Auth/Login").setHttpMethod("POST").setBody(data);
     const response = await khaos.fetcher<AuthDTO>();
-    set({ loading: false, error: response?.error, token: `${response.data?.type} ${response.data?.token}` });
+    const token = `${response.data?.type} ${response.data?.token}`;
+    localStorage.setItem("token_api", token);
+    set({ loading: false, error: response?.error, token });
   },
 }));
 
