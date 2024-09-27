@@ -16,11 +16,14 @@ function Login() {
           </div>
           <div>
             <Form></Form>
-            { error && <div className="mt-6 flex justify-center items-center gap-1">
+          </div>
+          {
+            error &&
+            <div className="mt-2 flex justify-center gap-1">
               <img src={ErrorIcon} width={20} height={20} />
               <p className="text-primary text-center font-semibold">{error}</p>
-            </div> }
-          </div>
+            </div>
+          }
         </div>
       </div>
     </div>
