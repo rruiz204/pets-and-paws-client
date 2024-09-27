@@ -1,17 +1,20 @@
 import { useForm } from "react-hook-form";
 import { schema, AuthInputs } from "./validation";
 import Field from "../../components/forms/Field";
-import ButtonLoading from "../../components/buttons/ButtonLoading";
+import LoadingIcon from "../../assets/svgs/loading.svg";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuthStore from "../../stores/useAuthStore";
 
 function Form() {
-  const { register, handleSubmit, formState: { errors }
+  const { register, reset, handleSubmit, formState: { errors }
   } = useForm<AuthInputs>({ resolver: yupResolver(schema) });
 
   const { login, loading } = useAuthStore();
 
-  const onSubmit = (data: AuthInputs) => login(data);
+  const onSubmit = (data: AuthInputs) => {
+    login(data)
+    reset();
+  };
 
   return (
     <div>
@@ -22,7 +25,12 @@ function Form() {
           <Field label="password" path="password" placeholder="password123" type="password"
             register={register} error={errors.password?.message}></Field>
         </div>
-        <ButtonLoading text="Login" isLoading={loading}></ButtonLoading>
+        <div className="bg-primary rounded-lg hover:bg-tertiary duration-200">
+          <button className="w-full flex justify-center gap-1 py-2">
+            <p className="text-white font-semibold">Login</p>
+            { loading && <img src={LoadingIcon} width={20} height={20} className="animate-spin" /> }
+          </button>
+        </div>
       </form>
     </div>
   );
