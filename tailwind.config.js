@@ -6,7 +6,8 @@ export default {
       colors: {
         primary: "#B7323B",
         seconday: "#25242E",
-        tertiary: "#862D36"
+        tertiary: "#862D36",
+        "hover-beige": "#EBEBEB"
       }
     },
   },
