@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  pets-and-paws-client:
+    image: pets-and-paws-client
+    container_name: pets-and-paws-client
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    env_file:
+      - .env.development
+    environment:
+      - VITE_MESSAGE=hello from docker broh ;)
