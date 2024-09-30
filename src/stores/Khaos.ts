@@ -1,5 +1,3 @@
-import { BASE_URL } from "../env";
-
 type HttpMethod = "GET" | "POST";
 
 interface HttpResponse<Dto> {
@@ -8,7 +6,7 @@ interface HttpResponse<Dto> {
 };
 
 class Khaos {
-  private url: string = BASE_URL;
+  private url: string = import.meta.env.VITE_BASE_URL;
 
   private options: RequestInit = {
     method: "GET",
