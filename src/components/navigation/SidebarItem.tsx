@@ -5,7 +5,6 @@ interface Props {
   icon: string;
   text: string;
   route: string;
-  active: boolean;
 };
 
 function SidebarItem({ icon, text, route }: Props) {
