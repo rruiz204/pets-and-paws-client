@@ -6,11 +6,12 @@ services:
     container_name: pets-and-paws-client
     build:
       context: .
-      target: dev
+      target: prod
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
+      - "8080:80"
     env_file:
-      - .env.development
+      - .env.production
     environment:
       - VITE_MESSAGE=hello from docker broh ;)
