@@ -15,7 +15,7 @@ function PasswordInput<Values extends FieldValues>({ placeholder, register, path
     <div className="border-2 flex items-center rounded-md p-1">
       <div className="w-[90%]">
         <input type={hidden ? "password" : "text"} placeholder={placeholder} {...register(path)} 
-          className="outline-none p-1 w-full"/>
+          className="outline-none px-2 py-1 w-full"/>
       </div>
       <div className="flex justify-center w-[10%]">
         <button onClick={toggleHidden} type="button" className="p-1 rounded-lg hover:bg-[#ebebeb] duration-200">

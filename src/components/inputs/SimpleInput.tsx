@@ -7,7 +7,7 @@ function SimpleInput<Values extends FieldValues>({ path, register, type, placeho
   return (
     <div>
       <input type={type} placeholder={placeholder} {...register(path)}
-        className="outline-none border-2 rounded-md px-1 py-2 mb-1 w-full" />
+        className="outline-none border-2 rounded-md p-2 mb-1 w-full" />
     </div>
   );
 };
