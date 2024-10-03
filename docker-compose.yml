@@ -12,6 +12,6 @@ services:
       - "5173:5173"
       - "8080:80"
     env_file:
-      - .env.production
+      - .env
     environment:
       - VITE_MESSAGE=hello from docker broh ;)
