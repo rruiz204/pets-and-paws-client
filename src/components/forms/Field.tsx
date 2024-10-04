@@ -1,38 +1,37 @@
 import { FieldValues, UseFormRegister, Path } from "react-hook-form";
-import Capitalize from "../../utils/Capitalize";
-import SimpleInput from "../inputs/SimpleInput";
-import PasswordInput from "../inputs/PasswordInput";
+import SimpleWrapper from "../inputs/SimpleWrapper";
+import PasswordWrapper from "../inputs/PasswordWrapper";
+import Warning from "./Warning";
 
-export interface FieldProps<Values extends FieldValues> {
-  path: Path<Values>;
-  register: UseFormRegister<Values>;
+export interface FieldProps {
+  label: string;
   error?: string;
 };
 
-export interface InputProps {
+export interface InputProps<V extends FieldValues> {
+  path: Path<V>;
+  register: UseFormRegister<V>;
   type: string;
-  label: string;
-  placeholder?: string;
+  placeholder: string;
 };
 
-type Props<Values extends FieldValues> = FieldProps<Values> & InputProps;
+export interface WrapperProps {
+  icon?: string;
+};
 
+type Props<V extends FieldValues> = FieldProps & InputProps<V> & WrapperProps;
 
-function Field<Values extends FieldValues>({ label, error, type, path, register, placeholder }: Props<Values>) {
-  const render = () => {
-    switch (type) {
-      case "text":
-        return <SimpleInput {...{path, type, placeholder, register}} ></SimpleInput>
-      case "password":
-        return <PasswordInput {...{path, placeholder, register}} ></PasswordInput>
-    };
+function Field<V extends FieldValues>({ label, error, type, placeholder, path, register, icon }: Props<V>) {
+  const renderInput = () => {
+    if (type == "text") return <SimpleWrapper {...{path, register, placeholder, type, icon}}></SimpleWrapper>
+    if (type == "password") return <PasswordWrapper {...{path, register, placeholder}}></PasswordWrapper>
   };
 
   return (
-    <div className="flex flex-col h-[100px]">
-      <label className="font-semibold mb-1">{Capitalize(label)}</label>
-      {render()}
-      {error && <p className="text-primary">{Capitalize(error)}</p>}
+    <div className="flex flex-col gap-1 h-[106px]">
+      <label className="font-semibold mb-1">{label}</label>
+      {renderInput()}
+      { error && <Warning error={error} justify="justify-start"></Warning>}
     </div>
   );
 };
