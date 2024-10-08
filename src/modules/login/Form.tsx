@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema, AuthInputs } from "./validation";
 import useAuthStore from "../../stores/useAuthStore";
+import { useNavigate } from "react-router-dom";
 import Field from "../../components/forms/Field";
 import Warning from "../../components/forms/Warning";
 
@@ -11,9 +12,13 @@ import EmailIcon from "../../assets/svgs/email.svg";
 function Form() {
   const { register, handleSubmit, formState: { errors }
   } = useForm<AuthInputs>({ resolver: yupResolver(schema) });
+  const navigate = useNavigate();
 
   const { login, loading, error } = useAuthStore();
-  const onSubmit = (data: AuthInputs) => login(data);
+  const onSubmit = async (data: AuthInputs) => {
+    await login(data);
+    if (!error) navigate("/home");
+  };
 
   return (
     <div>
