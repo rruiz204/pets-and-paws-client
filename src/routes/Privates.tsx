@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../modules/home/Home";
 import Testing from "../modules/testing/Testing";
 import Profile from "../modules/profile/Profile";
+import Users from "../modules/users/Users";
 
 const privates: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ const privates: RouteObject[] = [
       {
         path: "profile",
         element: <Profile />
+      },
+      {
+        path: "users",
+        element: <Users />
       }
     ]
   }
