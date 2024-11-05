@@ -4,7 +4,7 @@ import Logo from "@assets/imgs/pets-and-paws-logo.png";
 
 function Login() {
   return (
-    <div className="w-screen h-screen pt-24 text-seconday">
+    <div className="w-screen h-screen pt-24 text-cs-blue-300">
       <div className="min-w-[360px] max-w-[450px] mx-auto px-6 py-4">
         <div className="flex flex-col gap-10">
 
