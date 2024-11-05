@@ -11,6 +11,9 @@ export default {
         "cs-white-100": "#FCFCFC",
         "cs-white-200": "#F9F9F9",
         "cs-white-300": "#EBEBEB",
+        "cs-gray-100": "#D4D4D4",
+        "cs-gray-200": "#C5C5C5",
+        "cs-gray-300": "#919191"
       },
     },
   },
