@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema, LoginInputs } from "./validation";
+import useLogin from "./useLogin";
 
 import Button from "@shared/components/buttons/Button";
 import TextField from "@shared/components/fields/variants/TextField";
@@ -15,8 +16,10 @@ function Form() {
     resolver: yupResolver(LoginSchema)
   });
 
-  const onSubmit = (data: LoginInputs) => {
-    console.log(data);
+  const { invoke } = useLogin();
+
+  const onSubmit = async (inputs: LoginInputs) => {
+    await invoke(inputs);
   };
 
   return (

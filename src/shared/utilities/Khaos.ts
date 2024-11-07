@@ -1,11 +1,22 @@
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-export interface KhaosResponse<DataModel> {
-  data?: DataModel;
-  error?: string;
+export interface KhaosError {
+  title: string;
+  error: string;
 };
 
-class Khaos {
+export interface KhaosResponse<KhaosModel> {
+  data?: KhaosModel;
+  error?: KhaosError;
+};
+
+export interface IKhaos {
+  setHttpMethod(method: HttpMethod): IKhaos;
+  setBody(body: any): IKhaos;
+  fetch<KhaosModel>(): Promise<KhaosResponse<KhaosModel>>;
+};
+
+class Khaos implements IKhaos {
   private url: string = import.meta.env.VITE_BASE_URL;
 
   private options: RequestInit = {
@@ -27,10 +38,10 @@ class Khaos {
     return this;
   };
 
-  public async fetch<DataModel>(): Promise<KhaosResponse<DataModel>> {
+  public async fetch<KhaosModel>(): Promise<KhaosResponse<KhaosModel>> {
     const response = await fetch(this.url, this.options);
-    return (await response.json()) as KhaosResponse<DataModel>;
+    return (await response.json()) as KhaosResponse<KhaosModel>;
   };
 }
 
-export default Khaos
+export default Khaos;
