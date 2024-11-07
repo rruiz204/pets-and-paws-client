@@ -3,14 +3,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema, LoginInputs } from "./validation";
 
 import Button from "@shared/components/buttons/Button";
-import Field from "@shared/components/fields/Field";
-import Text from "@shared/components/fields/Text";
-import Password from "@shared/components/fields/Password";
+import TextField from "@shared/components/fields/variants/TextField";
+import PasswordField from "@shared/components/fields/variants/PasswordField";
+import Warning from "@shared/components/fields/Warning";
+import { Link } from "react-router-dom";
 
 import EmailIcon from "@assets/svgs/email.svg";
 
 function Form() {
-  const { register, handleSubmit, formState: {errors} } = useForm<LoginInputs>({
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginInputs>({
     resolver: yupResolver(LoginSchema)
   });
 
@@ -22,22 +23,28 @@ function Form() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <div className="flex flex-col">
-          <Field label="Email" error={errors.email?.message}>
-            <Text icon={EmailIcon} type="text" placeholder="example@gmail.com"
-              register={register} path="email"></Text>
-          </Field>
+        <div className="mb-2">
+          <TextField<LoginInputs> label="Email" error={errors.email?.message} icon={EmailIcon}
+            type="text" placeholder="example@gmail.com" register={register} path="email" />
 
-          <Field label="Password" error={errors.password?.message}>
-            <Password placeholder="ex4mpl3$" 
-              register={register} path="password"></Password>
-          </Field>
+          <PasswordField<LoginInputs> error={errors.password?.message}
+            register={register} path="password" />
         </div>
 
-        <div>
+        <div className="flex justify-end mb-4">
+          <Link to="/forgot-password" className="text-cs-gray-300 font-semibold underline">
+            Forgot Password
+          </Link>
+        </div>
+
+        <div className="mb-4">
           <Button text="Login" type="submit" variant="red"></Button>
         </div>
 
+        <div>
+          <Warning message="Invalid credentials" justify="center"></Warning>
+        </div>
+        
       </form>
     </div>
   );
