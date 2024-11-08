@@ -2,7 +2,7 @@ type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 export interface KhaosError {
   title: string;
-  error: string;
+  message: string;
 };
 
 export interface KhaosResponse<KhaosModel> {

@@ -16,7 +16,7 @@ function Form() {
     resolver: yupResolver(LoginSchema)
   });
 
-  const { invoke } = useLogin();
+  const { invoke, error } = useLogin();
 
   const onSubmit = async (inputs: LoginInputs) => {
     await invoke(inputs);
@@ -45,7 +45,7 @@ function Form() {
         </div>
 
         <div>
-          <Warning message="Invalid credentials" justify="center"></Warning>
+          { error && <Warning message={error.message} justify="center" /> }
         </div>
         
       </form>
