@@ -1,5 +1,5 @@
 import { AuthModel } from "@core/models/AuthModel";
-import { LoginInputs } from "./validation";
+import { LoginInputs } from "../validation";
 import Khaos from "@shared/utilities/Khaos";
 import useKhaos from "@core/hooks/useKhaos";
 import Hook from "@core/interfaces/Hook";

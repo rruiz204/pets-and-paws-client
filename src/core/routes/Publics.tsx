@@ -1,5 +1,5 @@
 import { RouteObject } from "react-router-dom";
-import Login from "@modules/authentication/login/Login";
+import Login from "@modules/authentication/login";
 import Forgot from "@modules/authentication/password/forgot/Forgot";
 import Reset from "@modules/authentication/password/reset/Reset";
 
