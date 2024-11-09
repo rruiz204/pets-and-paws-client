@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ForgotSchema, ForgotInputs } from "./validation";
+import useForgotPassword from "./hooks/useForgotPassword";
 
 import Button from "@shared/components/buttons/Button";
 import TextField from "@shared/components/fields/variants/TextField";
+import Warning from "@shared/components/fields/Warning";
 
 import EmailIcon from "@assets/svgs/email.svg";
 
@@ -12,8 +14,10 @@ function Form() {
     resolver: yupResolver(ForgotSchema)
   });
 
-  const onSubmit = (data: ForgotInputs) => {
-    console.log(data);
+  const { invoke, error } = useForgotPassword();
+
+  const onSubmit = async (inputs: ForgotInputs) => {
+    await invoke(inputs);
   };
 
   return (
@@ -27,6 +31,10 @@ function Form() {
 
         <div className="mb-4">
           <Button text="Send" type="submit" variant="red"></Button>
+        </div>
+
+        <div>
+          {error && <Warning message={error.message} justify="center" />}
         </div>
 
       </form>
