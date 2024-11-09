@@ -40,7 +40,10 @@ class Khaos implements IKhaos {
 
   public async fetch<KhaosModel>(): Promise<KhaosResponse<KhaosModel>> {
     const response = await fetch(this.url, this.options);
-    return (await response.json()) as KhaosResponse<KhaosModel>;
+    const payload = await response.json();
+
+    if (!response.ok) return { error: payload };
+    return { data: payload };
   };
 }
 
