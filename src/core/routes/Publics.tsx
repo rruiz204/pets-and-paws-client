@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import Login from "@modules/authentication/login";
-import Forgot from "@modules/authentication/password/forgot";
-import Reset from "@modules/authentication/password/reset";
+import Forgot from "@modules/authentication/forgot";
+import Reset from "@modules/authentication/reset";
 
 const publics: RouteObject[] = [
   { path: "/login", element: <Login/> },

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema, LoginInputs } from "./validation";
-import useLogin from "./hooks/useLogin";
+import useLogin from "@core/hooks/authentication/useLogin";
 
 import Button from "@shared/components/buttons/Button";
 import TextField from "@shared/components/fields/variants/TextField";

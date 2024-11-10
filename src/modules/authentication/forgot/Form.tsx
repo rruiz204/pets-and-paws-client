@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ForgotSchema, ForgotInputs } from "./validation";
-import useForgotPassword from "./hooks/useForgotPassword";
+import useForgot from "@core/hooks/authentication/useForgot";
 
 import Button from "@shared/components/buttons/Button";
 import TextField from "@shared/components/fields/variants/TextField";
@@ -14,7 +14,7 @@ function Form() {
     resolver: yupResolver(ForgotSchema)
   });
 
-  const { invoke, error } = useForgotPassword();
+  const { invoke, error } = useForgot();
 
   const onSubmit = async (inputs: ForgotInputs) => {
     await invoke(inputs);

@@ -1,10 +1,10 @@
 import { ForgotPasswordModel } from "@core/models/ForgotPasswordModel";
-import { ForgotInputs } from "../validation";
+import { ForgotInputs } from "@modules/authentication/forgot/validation";
 import Khaos from "@shared/utilities/Khaos";
 import useKhaos from "@core/hooks/useKhaos";
 import Hook from "@core/interfaces/Hook";
 
-const useForgotPassword = (): Hook<ForgotPasswordModel, ForgotInputs> => {
+const useForgot = (): Hook<ForgotPasswordModel, ForgotInputs> => {
   const { data, loading, error, fetch } = useKhaos<ForgotPasswordModel>();
   const khaos = new Khaos("/auth/forgot-password").setHttpMethod("POST");
 
@@ -16,4 +16,4 @@ const useForgotPassword = (): Hook<ForgotPasswordModel, ForgotInputs> => {
   return { data, loading, error, invoke };
 };
 
-export default useForgotPassword;
+export default useForgot;

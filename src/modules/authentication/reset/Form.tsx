@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ResetSchema, ResetInputs } from "./validation";
-import useResetPassword from "./hooks/useResetPassword";
+import useReset from "@core/hooks/authentication/useReset";
 import { useParams } from "react-router-dom";
 
 import Button from "@shared/components/buttons/Button";
@@ -13,7 +13,7 @@ function Form() {
     resolver: yupResolver(ResetSchema)
   });
 
-  const { invoke, error } = useResetPassword();
+  const { invoke, error } = useReset();
   const { token } = useParams();
 
   const onSubmit = async (inputs: ResetInputs) => {
