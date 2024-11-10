@@ -6,7 +6,7 @@ import Reset from "@modules/authentication/password/reset";
 const publics: RouteObject[] = [
   { path: "/login", element: <Login/> },
   { path: "/forgot-password", element: <Forgot/> },
-  { path: "/reset-password", element: <Reset/> },
+  { path: "/reset-password/:token", element: <Reset/> },
 ];
 
 export default publics;
