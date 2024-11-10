@@ -1,4 +1,4 @@
-import { ResetPasswordModel } from "@core/models/ResetPasswordModel";
+import { ResetModel } from "@core/models/ResetModel";
 import Khaos from "@shared/utilities/Khaos";
 import useKhaos from "@core/hooks/useKhaos";
 import Hook from "@core/interfaces/Hook";
@@ -8,8 +8,8 @@ interface ResetInputs {
   token: string;
 };
 
-const useReset = (): Hook<ResetPasswordModel, ResetInputs> => {
-  const { data, loading, error, fetch } = useKhaos<ResetPasswordModel>();
+const useReset = (): Hook<ResetModel, ResetInputs> => {
+  const { data, loading, error, fetch } = useKhaos<ResetModel>();
   const khaos = new Khaos("/auth/reset-password").setHttpMethod("POST");
 
   const invoke = async (inputs: ResetInputs) => {
