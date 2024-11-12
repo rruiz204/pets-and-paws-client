@@ -1,24 +1,25 @@
 import { Link } from "react-router-dom";
 import Item from "./Item";
-import useNavigationStore from "../../stores/useNavigationStore";
+
+import useNavigationStore from "@stores/useNavigationStore";
 
 interface Props {
   icon: string;
-  text: string;
+  name: string;
   path: string;
 };
 
-function SidebarItem({ icon, text, path }: Props) {
-  const { setActive, setExpanded, expanded } = useNavigationStore();
-
+function SidebarItem({ path, name, icon }: Props) {
+  const { setActive, expanded, setExpanded } = useNavigationStore();
+  
   const clickHandler = () => {
-    setActive(text)
+    setActive(name);
     if (expanded && window.innerWidth < 770) setExpanded();
   };
 
   return (
     <Link to={path} onClick={clickHandler}>
-      <Item icon={icon} text={text}></Item>
+      <Item name={name} icon={icon}></Item>
     </Link>
   );
 };

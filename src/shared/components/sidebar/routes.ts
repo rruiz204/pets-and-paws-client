@@ -1,5 +1,6 @@
 import HomeIcon from "@assets/svgs/home.svg";
 import ProfileIcon from "@assets/svgs/profile.svg";
+import PawIcon from "@assets/svgs/paw.svg";
 
 export interface IRoute {
   name: string;
@@ -7,19 +8,20 @@ export interface IRoute {
   icon: string;
 };
 
-const main: IRoute[] = [
+const primary: IRoute[] = [
   { name: "Home", path: "/home", icon: HomeIcon },
+  { name: "Pets Directory", path: "/pets-directory", icon: PawIcon },
 ];
 
-const others: IRoute[] = [
+const secondary: IRoute[] = [
   { name: "Profile", path: "/profile", icon: ProfileIcon },
 ];
 
 interface IRoutes {
-  main: IRoute[];
-  others: IRoute[];
+  primary: IRoute[];
+  secondary: IRoute[];
 };
 
-const Routes: IRoutes = { main, others };
+const routes: IRoutes = { primary, secondary };
 
-export default Routes;
+export default routes;
