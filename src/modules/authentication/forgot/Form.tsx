@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ForgotSchema, ForgotInputs } from "./validation";
 import useForgot from "@core/hooks/authentication/useForgot";
 
-import Button from "@shared/components/buttons/Button";
+import SimpleButton from "@shared/components/buttons/SimpleButton";
 import TextField from "@shared/components/fields/variants/TextField";
 import Warning from "@shared/components/fields/Warning";
 
@@ -30,7 +30,7 @@ function Form() {
         </div>
 
         <div className="mb-4">
-          <Button text="Send" type="submit" variant="red"></Button>
+          <SimpleButton text="Send" type="submit" variant="red"></SimpleButton>
         </div>
 
         <div>

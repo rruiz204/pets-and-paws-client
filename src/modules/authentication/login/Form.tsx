@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema, LoginInputs } from "./validation";
 import useLogin from "@core/hooks/authentication/useLogin";
 
-import Button from "@shared/components/buttons/Button";
+import SimpleButton from "@shared/components/buttons/SimpleButton";
 import TextField from "@shared/components/fields/variants/TextField";
 import PasswordField from "@shared/components/fields/variants/PasswordField";
 import Warning from "@shared/components/fields/Warning";
@@ -41,7 +41,7 @@ function Form() {
         </div>
 
         <div className="mb-4">
-          <Button text="Login" type="submit" variant="red"></Button>
+          <SimpleButton type="submit" variant="red" text="Login"></SimpleButton>
         </div>
 
         <div>

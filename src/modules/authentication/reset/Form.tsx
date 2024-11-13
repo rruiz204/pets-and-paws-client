@@ -4,7 +4,7 @@ import { ResetSchema, ResetInputs } from "./validation";
 import useReset from "@core/hooks/authentication/useReset";
 import { useParams } from "react-router-dom";
 
-import Button from "@shared/components/buttons/Button";
+import SimpleButton from "@shared/components/buttons/SimpleButton";
 import PasswordField from "@shared/components/fields/variants/PasswordField";
 import Warning from "@shared/components/fields/Warning";
 
@@ -33,7 +33,7 @@ function Form() {
         </div>
 
         <div className="mb-4">
-          <Button text="Reset" type="submit" variant="red"></Button>
+          <SimpleButton text="Reset" type="submit" variant="red"></SimpleButton>
         </div>
 
         <div>
