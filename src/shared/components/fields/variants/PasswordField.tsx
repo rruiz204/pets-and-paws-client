@@ -6,8 +6,8 @@ import SimpleInput from "../inputs/SimpleInput";
 import { BaseProps, FormProps } from "../Props";
 
 import LockIcon from "@assets/svgs/lock.svg";
-import EyeIcon from "@assets/svgs/eye.svg";
-import EyeSlashIcon from "@assets/svgs/eye-slash.svg";
+import EyeOpenIcon from "@assets/svgs/eye-open.svg";
+import EyeCloseIcon from "@assets/svgs/eye-close.svg";
 
 type Props<V extends FieldValues> = FormProps<V> & Pick<BaseProps, "error">;
 
@@ -24,8 +24,8 @@ function PasswordField<V extends FieldValues>({ register, path, error }: Props<V
         <button type="button" className="p-1">
           {
             hidden
-              ? <img src={EyeIcon} height={25} width={25} />
-              : <img src={EyeSlashIcon} height={25} width={25} />
+              ? <img src={EyeOpenIcon} height={25} width={25} />
+              : <img src={EyeCloseIcon} height={25} width={25} />
           }
         </button>
       </div>
