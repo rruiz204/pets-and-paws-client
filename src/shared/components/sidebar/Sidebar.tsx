@@ -4,7 +4,8 @@ import Item from "./Item";
 import routes, { IRoute } from "./routes";
 
 import LogoLetters from "@assets/imgs/pets-and-paws-letters.png";
-import ChevronIcon from "@assets/svgs/chevron-last.svg";
+import ChevronRightIcon from "@assets/svgs/chevron-right.svg";
+import ChevronLefttIcon from "@assets/svgs/chevron-left.svg";
 
 function Sidebar() {
   const { expanded, setExpanded } = useNavigationStore();
@@ -31,7 +32,7 @@ function Sidebar() {
         }
 
         <div onClick={setExpanded} className="cursor-pointer">
-          <Item icon={ChevronIcon} name="Collapse"></Item>
+          <Item icon={expanded ? ChevronLefttIcon : ChevronRightIcon} name="Collapse"></Item>
         </div>
 
       </div>
