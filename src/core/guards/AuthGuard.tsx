@@ -1,9 +1,8 @@
 import TokenService from "@services/TokenService";
 import { Navigate } from "react-router-dom";
-import { ReactNode } from "react";
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
 function AuthGuard({ children }: Props) {
