@@ -1,4 +1,4 @@
-import { ForgotModel } from "@core/models/ForgotModel";
+import { ForgotModel } from "@core/models";
 import { ForgotInputs } from "@modules/authentication/forgot/validation";
 import Khaos from "@shared/utilities/Khaos";
 import useKhaos from "@core/hooks/useKhaos";

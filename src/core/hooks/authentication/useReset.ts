@@ -1,4 +1,4 @@
-import { ResetModel } from "@core/models/ResetModel";
+import { ResetModel } from "@core/models";
 import Khaos from "@shared/utilities/Khaos";
 import useKhaos from "@core/hooks/useKhaos";
 import Hook from "@core/interfaces/Hook";

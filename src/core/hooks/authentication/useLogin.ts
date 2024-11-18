@@ -1,4 +1,4 @@
-import { AuthModel } from "@core/models/AuthModel";
+import { AuthModel } from "@core/models";
 import { LoginInputs } from "@modules/authentication/login/validation";
 import Khaos from "@shared/utilities/Khaos";
 import useKhaos from "@core/hooks/useKhaos";
