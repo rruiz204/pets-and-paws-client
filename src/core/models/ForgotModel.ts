@@ -1,3 +1,5 @@
-export interface ForgotModel {
+interface ForgotModel {
   message: string;
 };
+
+export default ForgotModel;

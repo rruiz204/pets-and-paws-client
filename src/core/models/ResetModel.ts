@@ -1,3 +1,5 @@
-export interface ResetModel {
+interface ResetModel {
   message: string;
 };
+
+export default ResetModel;
