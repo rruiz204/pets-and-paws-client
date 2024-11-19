@@ -1,5 +1,5 @@
 interface TokenModel {
-  roles: string[];
+  charge: string[];
   scopes: string[];
 };
 

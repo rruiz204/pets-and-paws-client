@@ -1,7 +1,8 @@
+import TokenService from "@services/TokenService";
 import useNavigationStore from "@stores/useNavigationStore";
+import routes, { IRoute } from "./routes";
 import SidebarItem from "./SidebarItem";
 import Item from "./Item";
-import routes, { IRoute } from "./routes";
 
 import LogoLetters from "@assets/imgs/pets-and-paws-letters.png";
 import ChevronRightIcon from "@assets/svgs/chevron-right.svg";
@@ -9,7 +10,9 @@ import ChevronLefttIcon from "@assets/svgs/chevron-left.svg";
 
 function Sidebar() {
   const { expanded, setExpanded } = useNavigationStore();
-  const responsive = `${expanded ? "w-screen md:w-fit absolute md:relative z-50" : null}`
+  const responsive = `${expanded ? "w-screen md:w-fit absolute md:relative z-50" : null}`;
+
+  const { charge } = TokenService.payload();
 
   return (
     <div className={`h-screen bg-white text-cs-blue-300 border-r-2 ${responsive}`}>
@@ -20,7 +23,7 @@ function Sidebar() {
         </div>
 
         {
-          routes.primary.map((route: IRoute) => (
+          routes.primary.filter(route => route.roles.some(role => charge.includes(role))).map((route: IRoute) => (
             <SidebarItem {...route} key={`item-${route.name}`}></SidebarItem>
           ))
         }

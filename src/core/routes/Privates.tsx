@@ -3,6 +3,7 @@ import MainLayout from "@core/layouts/MainLayout";
 import Home from "@modules/home/Home";
 import Directory from "@modules/pets/directory";
 import Profile from "@modules/profile/me";
+import Permissions from "@modules/security/permissions";
 
 const privates: RouteObject[] = [
   { path: "/", element: <MainLayout/>, children: [
@@ -15,6 +16,10 @@ const privates: RouteObject[] = [
     { path: "/profile", children: [
       { path: "me", element: <Profile/> }
     ]},
+
+    { path: "/security", children: [
+      { path: "permissions", element: <Permissions/> }
+    ]}
   ]}
 ];
 
