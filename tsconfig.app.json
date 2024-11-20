@@ -29,6 +29,7 @@
       "@core/*": ["src/core/*"],
       "@stores/*": ["src/stores/*"],
       "@services/*": ["src/services/*"],
+      "@khaos/*": ["src/khaos/*"],
     }
   },
   "include": ["src"]

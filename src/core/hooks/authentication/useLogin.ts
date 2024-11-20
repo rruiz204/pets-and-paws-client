@@ -1,20 +1,25 @@
-import { AuthModel } from "@core/models";
-import { LoginInputs } from "@modules/authentication/login/validation";
-import Khaos from "@shared/utilities/Khaos";
-import useKhaos from "@core/hooks/useKhaos";
-import Hook from "@core/interfaces/Hook";
+import { useEffect } from "react";
 import TokenService from "@services/TokenService";
 
-const useLogin = (): Hook<AuthModel, LoginInputs> => {
-  const { data, loading, error, fetch } = useKhaos<AuthModel>();
+import Khaos from "@khaos/index";
+import useKhaos from "@khaos/hook";
+import { KhaosHook } from "@khaos/types";
+
+import { AuthModel } from "@core/models";
+import { LoginInputs } from "@modules/authentication/login/validation";
+
+const useLogin = (): KhaosHook<AuthModel, LoginInputs> => {
+  const { data, loading, error, invoke: fetcher } = useKhaos<AuthModel>();
   const khaos = new Khaos("/auth/login").setHttpMethod("POST");
 
   const invoke = async (inputs: LoginInputs) => {
     khaos.setBody(inputs);
-    await fetch(khaos);
-    
-    if (data) TokenService.save(data);
+    await fetcher(khaos);
   };
+
+  useEffect(() => {
+    if (data) TokenService.save(data);
+  }, [data]);
 
   return { data, loading, error, invoke };
 };

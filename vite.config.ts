@@ -13,6 +13,7 @@ export default defineConfig({
       "@core": path.resolve(__dirname, "src/core"),
       "@stores": path.resolve(__dirname, "src/stores"),
       "@services": path.resolve(__dirname, "src/services"),
+      "@khaos": path.resolve(__dirname, "src/khaos"),
     }
   }
 })
