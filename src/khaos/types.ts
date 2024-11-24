@@ -14,12 +14,20 @@ export interface KhaosResponse<KhaosModel> {
 export interface IKhaos {
   setHttpMethod(method: HttpMethod): IKhaos;
   setBody(body: any): IKhaos;
+  setAuthToken(): IKhaos;
   invoke<KhaosModel>(): Promise<KhaosResponse<KhaosModel>>;
 };
 
-export interface KhaosHook<KhaosModel, KhaosInputs> {
+interface BaseKhaosHook<KhaosModel> {
   data: PossibleUndefined<KhaosModel>;
   error: PossibleUndefined<KhaosError>;
   loading: boolean;
+};
+
+export interface CommandKhaosHook<KhaosModel, KhaosInputs> extends BaseKhaosHook<KhaosModel> {
   invoke: (inputs: KhaosInputs) => Promise<void>
+};
+
+export interface QueryKhaosHook<KhaosModel> extends BaseKhaosHook<KhaosModel> {
+  invoke: () => Promise<void>;
 };

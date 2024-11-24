@@ -1,4 +1,5 @@
 import { HttpMethod, IKhaos, KhaosResponse } from "./types";
+import TokenService from "@services/TokenService";
 
 class Khaos implements IKhaos {
   private url: string = import.meta.env.VITE_BASE_URL;
@@ -17,6 +18,11 @@ class Khaos implements IKhaos {
   public setBody(body: any): IKhaos {
     this.options.body = JSON.stringify(body);
     return this;
+  };
+
+  public setAuthToken(): IKhaos {
+    (this.options.headers as Record<string, string>)["Authorization"] = TokenService.obtain();
+    return this
   };
 
   public async invoke<KhaosModel>(): Promise<KhaosResponse<KhaosModel>> {
