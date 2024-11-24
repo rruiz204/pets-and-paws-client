@@ -1,6 +1,5 @@
 interface TokenModel {
-  charge: string[];
-  scopes: string[];
+  sub: string;
 };
 
 export default TokenModel;
