@@ -3,12 +3,12 @@ import TokenService from "@services/TokenService";
 
 import Khaos from "@khaos/index";
 import useKhaos from "@khaos/hook";
-import { KhaosHook } from "@khaos/types";
+import { CommandKhaosHook } from "@khaos/types";
 
 import { AuthModel } from "@core/models";
 import { LoginInputs } from "@modules/authentication/login/validation";
 
-const useLogin = (): KhaosHook<AuthModel, LoginInputs> => {
+const useLogin = (): CommandKhaosHook<AuthModel, LoginInputs> => {
   const { data, loading, error, invoke: fetcher } = useKhaos<AuthModel>();
   const khaos = new Khaos("/auth/login").setHttpMethod("POST");
 
