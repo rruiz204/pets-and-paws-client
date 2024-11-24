@@ -1,5 +1,7 @@
-import TokenService from "@services/TokenService";
 import useNavigationStore from "@stores/useNavigationStore";
+import useRoles from "@core/hooks/authentication/useRoles";
+import { useEffect } from "react";
+
 import routes, { IRoute } from "./routes";
 import SidebarItem from "./SidebarItem";
 import Item from "./Item";
@@ -12,7 +14,11 @@ function Sidebar() {
   const { expanded, setExpanded } = useNavigationStore();
   const responsive = `${expanded ? "w-screen md:w-fit absolute md:relative z-50" : null}`;
 
-  const { charge } = TokenService.payload();
+  const { invoke, data } = useRoles();
+
+  useEffect(() => {
+    invoke();
+  }, []);
 
   return (
     <div className={`h-screen bg-white text-cs-blue-300 border-r-2 ${responsive}`}>
@@ -23,9 +29,9 @@ function Sidebar() {
         </div>
 
         {
-          routes.primary.filter(route => route.roles.some(role => charge.includes(role))).map((route: IRoute) => (
-            <SidebarItem {...route} key={`item-${route.name}`}></SidebarItem>
-          ))
+         routes.primary.filter(route => route.roles.some(role => data?.roles.includes(role))).map((route: IRoute) => (
+          <SidebarItem {...route} key={`item-${route.name}`} ></SidebarItem>
+         ))
         }
         <hr />
         {
