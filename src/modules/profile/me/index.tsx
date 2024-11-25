@@ -1,8 +1,12 @@
+import PageLayout from "@core/layouts/PageLayout";
+
 function Profile() {
   return (
-    <div>
-      <p>my profile works!</p>
-    </div>
+    <PageLayout>
+      <div>
+        <p>my profile works!</p>
+      </div>
+    </PageLayout>
   );
 };
 
