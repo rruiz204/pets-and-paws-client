@@ -1,13 +1,13 @@
 import PageLayout from "@core/layouts/PageLayout";
 
-function Home() {
+function Roles() {
   return (
     <PageLayout>
       <div>
-        <h1 className="font-bold text-4xl">Home Page</h1>
+        <p>authorization works!</p>
       </div>
     </PageLayout>
   );
 };
 
-export default Home
+export default Roles;

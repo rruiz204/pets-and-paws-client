@@ -20,7 +20,7 @@ const primary: IRoute[] = [
     icon: PawIcon, roles: ["admin", "veterinarian"]
   },
   {
-    name: "Permissions", path: "/security/permissions",
+    name: "Roles", path: "/security/roles",
     icon: PermissionIcon, roles: ["admin"]
   },
 ];

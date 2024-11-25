@@ -1,8 +1,12 @@
+import PageLayout from "@core/layouts/PageLayout";
+
 function Directory() {
   return (
-    <div>
-      <p>pets directory works!</p>
-    </div>
+    <PageLayout>
+      <div>
+        <p>authorization works!</p>
+      </div>
+    </PageLayout>
   );
 };
 
