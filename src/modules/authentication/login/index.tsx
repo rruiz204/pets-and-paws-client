@@ -1,8 +1,17 @@
-import Form from "./Form";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import TokenService from "@services/TokenService";
 
+import Form from "./Form";
 import Logo from "@assets/imgs/pets-and-paws-logo.png";
 
 function Login() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (TokenService.obtain()) navigate("/home");
+  }, []);
+
   return (
     <div className="w-screen h-screen min-[1600px]:py-14 text-cs-blue-300">
       <div className="min-w-[360px] max-w-[450px] mx-auto px-6 py-4">
