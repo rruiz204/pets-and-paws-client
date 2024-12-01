@@ -1,5 +1,5 @@
 import TokenService from "@services/TokenService";
-import { Navigate } from "react-router-dom";
+import RedirectModal from "@shared/components/modals/RedirectModal";
 
 interface Props {
   children: React.ReactNode;
@@ -7,7 +7,12 @@ interface Props {
 
 function AuthGuard({ children }: Props) {
   const token = TokenService.obtain();
-  if (!token) return <Navigate to={"/login"}/>
+  if (!token) return (
+    <div>
+      {children}
+      <RedirectModal></RedirectModal>
+    </div>
+  );
   return children;
 };
 
